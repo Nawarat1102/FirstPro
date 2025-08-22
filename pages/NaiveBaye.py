@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+import seaborn as sns
 from sklearn.naive_bayes import GaussianNB
 
 st.title('การทำนายความเสี่ยงเบาหวานระยะเริ่มต้นด้วย Naive Bayes')
@@ -14,8 +15,20 @@ dt = dt.replace({
     'Positive': 1, 'Negative': 0
 })
 
+# วาด pairplot
+if st.checkbox("แสดง Pairplot (ใช้เวลาประมวลผลเล็กน้อย)"):
+    st.write("### 🌺 Pairplot: การกระจายของข้อมูลทั้งหมด")
+    fig2 = sns.pairplot(dt, hue='class')
+    st.pyplot(fig2)
 
-st.subheader("กรุณาใส่ข้อมูลเพื่อทำนายความเสี่ยงเบาหวาน")
+html_8 = """
+<div style="background-color:#6BD5DA;padding:15px;border-radius:15px 15px 15px 15px;border-style:'solid';border-color:black">
+<center><h5>ทำนายข้อมูล</h5></center>
+</div>
+"""
+st.markdown(html_8, unsafe_allow_html=True)
+st.markdown("")
+
 A1 = st.number_input("กรุณาเลือกข้อมูล A1")
 A2 = st.number_input("กรุณาเลือกข้อมูล A2")
 A3 = st.number_input("กรุณาเลือกข้อมูล A3")
