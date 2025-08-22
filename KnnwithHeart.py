@@ -29,6 +29,11 @@ st.markdown("")
 
 st.subheader("ข้อมูลส่วนแรก 10 แถว")
 dt = pd.read_csv("./data/Diabetes.csv")
+dt = dt.replace({
+    'Yes': 1, 'No': 0,
+    'Male': 1, 'Female': 0,
+    'Positive': 1, 'Negative': 0
+})
 st.write(dt.head(10))
 st.subheader("ข้อมูลส่วนสุดท้าย 10 แถว")
 st.write(dt.tail(10))
@@ -42,15 +47,15 @@ st.subheader("📌 เลือกฟีเจอร์เพื่อดูก�
 feature = st.selectbox("เลือกฟีเจอร์", dt.columns[:-1])
 
 # วาดกราฟ boxplot
-st.write(f"### 🎯 Boxplot: {feature} แยกตามชนิดของโรคหัวใจ")
+st.write(f"### 🎯 Boxplot: {feature} แยกตามผลโรคเบาหวาน")
 fig, ax = plt.subplots()
-sns.boxplot(data=dt, x='HeartDisease', y=feature, ax=ax)
+sns.boxplot(data=dt, x='class', y=feature, ax=ax)
 st.pyplot(fig)
 
 # วาด pairplot
 if st.checkbox("แสดง Pairplot (ใช้เวลาประมวลผลเล็กน้อย)"):
     st.write("### 🌺 Pairplot: การกระจายของข้อมูลทั้งหมด")
-    fig2 = sns.pairplot(dt, hue='HeartDisease')
+    fig2 = sns.pairplot(dt, hue='class')
     st.pyplot(fig2)
 
 html_8 = """
