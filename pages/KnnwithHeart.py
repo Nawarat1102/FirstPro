@@ -5,7 +5,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-st.title('การทำนายข้อมูลโรคเบาหวาน K-Nearest Neighbor')
+st.title('การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้น K-Nearest Neighbor')
 #st.image("./img/b1.jpg")
 col1, col2 = st.columns(2)
 
