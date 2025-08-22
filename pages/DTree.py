@@ -59,6 +59,6 @@ if st.button("ทำนายผล"):
         st.image("./img/b3.jpg")
     else:
         st.success("ผู้ป่วยไม่มีความเสี่ยงเบาหวาน")
-        st.image("./img/b2.jpg")
+        st.image("./img/b5.jpg")
 else:
     st.write("ไม่ทำนาย")
