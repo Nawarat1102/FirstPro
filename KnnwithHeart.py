@@ -77,17 +77,22 @@ A8 = st.number_input("กรุณาเลือกข้อมูล A8")
 A9 = st.number_input("กรุณาเลือกข้อมูล A9")
 A10 = st.number_input("กรุณาเลือกข้อมูล A10")
 A11 = st.number_input("กรุณาเลือกข้อมูล A11")
+A12 = st.number_input("กรุณาเลือกข้อมูล A12")
+A13 = st.number_input("กรุณาเลือกข้อมูล A13")
+A14 = st.number_input("กรุณาเลือกข้อมูล A14")
+A15 = st.number_input("กรุณาเลือกข้อมูล A15")
+A16 = st.number_input("กรุณาเลือกข้อมูล A16")
 
 if st.button("ทำนายผล"):
    #st.write("ทำนาย")
    #dt = pd.read_csv("./data/iris-3.csv") 
-   X = dt.drop('HeartDisease', axis=1)
-   y = dt.HeartDisease
+   X = dt.drop('class', axis=1)
+   y = dt['class']
 
    Knn_model = KNeighborsClassifier(n_neighbors=3)
    Knn_model.fit(X, y)  
     
-   x_input = np.array([[A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11]])
+   x_input = np.array([[A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,A12,A13,A14,A15,A16]])
    st.write(Knn_model.predict(x_input))
    
    out=Knn_model.predict(x_input)
