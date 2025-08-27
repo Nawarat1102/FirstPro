@@ -56,10 +56,10 @@ if st.button("ทำนายผล"):
     st.write(out)  
 
     if out[0] == 1:
-        st.success("ผู้ป่วยมีความเสี่ยงเบาหวานระยะเริ่มต้น")
+        st.success("ท่านมีความเสี่ยงเบาหวานระยะเริ่มต้น")
         st.image("./img/b3.jpg")
     else:
-        st.success("ผู้ป่วยไม่มีความเสี่ยงเบาหวาน")
+        st.success("ท่านไม่มีความเสี่ยงเบาหวาน")
         st.image("./img/b5.jpg")
 else:
     st.write("ไม่ทำนาย")
