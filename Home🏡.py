@@ -15,7 +15,7 @@ from streamlit_lottie import st_lottie
 with open("./img/Health.json") as f:
     lottie_hm = json.load(f)
 
-st.page_link("Home.py", label="หน้าแรก", icon="🏠")
+st.page_link("Home🏡.py", label="หน้าแรก", icon="🏠")
 st.page_link("pages/Decision Tree🌳.py", label="การทำนายข้อมูลด้วยเทคนิคต้นไม้ตัดสินใจ", icon="1️⃣")
 st.page_link("pages/NaiveBaye📊.py", label="การทำนายข้อมูลด้วยเทคนิค Naive Baye", icon="2️⃣")
 st.page_link("pages/K-Nearest Neighbor🏘️.py", label="การทำนายข้อมูลด้วยเทคนิค KNN", icon="3️⃣")
