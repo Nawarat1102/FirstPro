@@ -14,9 +14,12 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-# ====== โหลด Lottie ======
-lottie_url_hello = "https://lottie.host/a6ba2cb1-4445-4e24-b0c0-29c910e30d35/siFuTj6Dck.json"
-lottie_hello = load_lottieurl(lottie_url_hello)
+# URL ของ Lottie animations
+lottie_url_success = "https://assets4.lottiefiles.com/private_files/lf30_t26law.json"  # ตัวอย่าง animation ผ่าน
+lottie_url_failure = "https://assets5.lottiefiles.com/packages/lf20_xx7bflig.json"   # ตัวอย่าง animation ไม่ผ่าน
+
+lottie_success = load_lottieurl(lottie_url_success)
+lottie_failure = load_lottieurl(lottie_url_failure)
 
 st.title('การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้น K-Nearest Neighbor')
 
@@ -109,12 +112,12 @@ if st.button("ทำนายผล"):
 
    if out[0] == 1:
     st.success("⚠️ท่านมีความเสี่ยงเบาหวานระยะเริ่มต้น (｡ŏ﹏ŏ)")
-    st.image("./img/b3.jpg")
+    if lottie_success:
+            st_lottie(lottie_success, speed=1, width=300, height=300, key="success")
    else:
     st.success("✅ท่านไม่มีความเสี่ยงเบาหวาน (≧▽≦)")
-    st.image("./img/b5.jpg")
-    if lottie_hello:
-        st_lottie(lottie_hello, height=250, key="hello")
+    if lottie_failure:
+            st_lottie(lottie_failure, speed=1, width=300, height=300, key="failure")
 
 else:
     st.write("ไม่ทำนาย")
