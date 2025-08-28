@@ -85,7 +85,7 @@ html_8 = """
 """
 st.markdown(html_8, unsafe_allow_html=True)
 st.markdown("")
-st_lottie(lottie_success, height=250)
+st_lottie(lottie_Ac, height=250)
 st.subheader("กรุณาใส่ข้อมูลเพื่อทำนายความเสี่ยงเบาหวาน")
 A1 = st.number_input("อายุ")
 A2 = st.number_input("เพศ (ชาย=1 หญิง=0)")
