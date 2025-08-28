@@ -14,12 +14,15 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-# URL ของ Lottie animations
-lottie_url_success = "https://lottie.host/5fbe7ce4-ede0-4c1f-8448-5da9c85dabd0/HjsycepW3P.lottie"  # ตัวอย่าง animation ผ่าน
-lottie_url_failure = "https://assets7.lottiefiles.com/packages/lf20_5dd64c83-bab9-4b2b-b289-fd13b1c1fd1c.json"   # ตัวอย่าง animation ไม่ผ่าน
+import json
+from streamlit_lottie import st_lottie
 
-lottie_success = load_lottieurl(lottie_url_success)
-lottie_failure = load_lottieurl(lottie_url_failure)
+with open("./img/Trackingofassets.json") as f:
+    lottie_success = json.load(f)
+
+with open("./img/Trackingofassets.json") as f:
+    lottie_failure = json.load(f)
+
 
 st.title('การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้น K-Nearest Neighbor')
 
@@ -109,15 +112,12 @@ if st.button("ทำนายผล"):
    st.write(Knn_model.predict(x_input))
    
    out=Knn_model.predict(x_input)
-
+   
    if out[0] == 1:
     st.success("⚠️ท่านมีความเสี่ยงเบาหวานระยะเริ่มต้น (｡ŏ﹏ŏ)")
-    if lottie_success:
-            st_lottie(lottie_failure, speed=1, width=300, height=300, key="failure")
+    st_lottie(lottie_failure, height=250)  
    else:
     st.success("✅ท่านไม่มีความเสี่ยงเบาหวาน (≧▽≦)")
-    if lottie_failure:
-            st_lottie(lottie_success, speed=1, width=300, height=300, key="success")
-
+    st_lottie(lottie_success, height=250)  # แสดง animation ผ่าน
 else:
     st.write("ไม่ทำนาย")
