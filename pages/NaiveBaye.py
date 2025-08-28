@@ -39,51 +39,48 @@ with col2:
    st.image("./img/b4.jpg")
 
 
+# ----------------- ข้อมูล -----------------
 html_7 = """
-<div style="background-color:#33beff;padding:15px;border-radius:15px 15px 15px 15px;border-style:'solid';border-color:black">
+<div style="background-color:#33beff;padding:15px;border-radius:15px;
+            border-style:'solid';border-color:black">
 <center><h4>ข้อมูลโรคเบาหวานสำหรับทำนาย</h4></center>
 </div>
 """
 st.markdown(html_7, unsafe_allow_html=True)
-st.markdown("")
-st.markdown("")
 
-
-# โหลดข้อมูล
 dt = pd.read_csv("./data/Diabetes.csv")
-# แปลงค่าหมวดหมู่เป็นตัวเลข
 dt = dt.replace({
     'Yes': 1, 'No': 0,
     'Male': 1, 'Female': 0,
     'Positive': 1, 'Negative': 0
 })
 
+st.subheader("ข้อมูลส่วนแรก 10 แถว")
 st.write(dt.head(10))
 st.subheader("ข้อมูลส่วนสุดท้าย 10 แถว")
 st.write(dt.tail(10))
 
-# สถิติพื้นฐาน
 st.subheader("📈 สถิติพื้นฐานของข้อมูล")
 st.write(dt.describe())
 
-# การเลือกแสดงกราฟตามฟีเจอร์
+# ----------------- Visualization -----------------
 st.subheader("📌 เลือกฟีเจอร์เพื่อดูการกระจายข้อมูล")
 feature = st.selectbox("เลือกฟีเจอร์", dt.columns[:-1])
 
-# วาดกราฟ boxplot
 st.write(f"### 🎯 Boxplot: {feature} แยกตามผลโรคเบาหวาน")
 fig, ax = plt.subplots()
 sns.boxplot(data=dt, x='class', y=feature, ax=ax)
 st.pyplot(fig)
 
-# วาด pairplot
 if st.checkbox("แสดง Pairplot (ใช้เวลาประมวลผลเล็กน้อย)"):
     st.write("### 🌺 Pairplot: การกระจายของข้อมูลทั้งหมด")
     fig2 = sns.pairplot(dt, hue='class')
     st.pyplot(fig2)
 
+# ----------------- ทำนาย -----------------
 html_8 = """
-<div style="background-color:#6BD5DA;padding:15px;border-radius:15px 15px 15px 15px;border-style:'solid';border-color:black">
+<div style="background-color:#6BD5DA;padding:15px;border-radius:15px;
+            border-style:'solid';border-color:black">
 <center><h5>ทำนายข้อมูล</h5></center>
 </div>
 """
