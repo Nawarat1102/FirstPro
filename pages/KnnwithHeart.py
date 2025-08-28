@@ -15,7 +15,7 @@ def load_lottieurl(url: str):
     return r.json()
 
 # URL ของ Lottie animations
-lottie_url_success = "https://assets4.lottiefiles.com/private_files/lf30_t26law.json"  # ตัวอย่าง animation ผ่าน
+lottie_url_success = "https://assets7.lottiefiles.com/packages/lf20_5dd64c83-bab9-4b2b-b289-fd13b1c1fd1c.json"  # ตัวอย่าง animation ผ่าน
 lottie_url_failure = "https://assets5.lottiefiles.com/packages/lf20_xx7bflig.json"   # ตัวอย่าง animation ไม่ผ่าน
 
 lottie_success = load_lottieurl(lottie_url_success)
@@ -117,7 +117,7 @@ if st.button("ทำนายผล"):
    else:
     st.success("✅ท่านไม่มีความเสี่ยงเบาหวาน (≧▽≦)")
     if lottie_failure:
-        st_lottie(lottie_success, speed=1, width=300, height=300, key="success")
+            st_lottie(lottie_success, speed=1, width=300, height=300, key="success")
 
 else:
     st.write("ไม่ทำนาย")
