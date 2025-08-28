@@ -37,10 +37,10 @@ st.title("🌳 การทำนายข้อมูลโรคเบาห�
 col1, col2 = st.columns(2)
 with col1:
     st.header("")
-    st.image("./img/b2.jpg")
+    st.image("./img/b7.jpg")
 with col2:
     st.header("")
-    st.image("./img/b4.jpg")
+    st.image("./img/b1.jpg")
 
 # ----------------------------
 # กล่องหัวข้อ

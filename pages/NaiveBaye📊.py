@@ -26,17 +26,17 @@ with open("./img/AddFile.json") as f:
 with open("./img/Trackingofassets.json") as f:
     lottie_Ac = json.load(f)
 
-st.title('การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้น Naive Baye')
+st.title('📊การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้น Naive Baye')
 #st.image("./img/b1.jpg")
 col1, col2 = st.columns(2)
 
 with col1:
    st.header("")
-   st.image("./img/b2.jpg")
+   st.image("./img/b3.jpg")
 
 with col2:
    st.header("")
-   st.image("./img/b4.jpg")
+   st.image("./img/b10.jpg")
 
 
 # ----------------- ข้อมูล -----------------
