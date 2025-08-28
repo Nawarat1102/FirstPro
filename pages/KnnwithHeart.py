@@ -15,8 +15,8 @@ def load_lottieurl(url: str):
     return r.json()
 
 # URL ของ Lottie animations
-lottie_url_success = "https://assets7.lottiefiles.com/packages/lf20_5dd64c83-bab9-4b2b-b289-fd13b1c1fd1c.json"  # ตัวอย่าง animation ผ่าน
-lottie_url_failure = "https://assets7.lottiefiles.com/packages/lf20_5dd64c83-bab9-4b2b-b289-fd13b1c1fd1c.json"   # ตัวอย่าง animation ไม่ผ่าน
+lottie_url_success = "Payment Successful.json"  # ตัวอย่าง animation ผ่าน
+lottie_url_failure = "Payment Successful.json"   # ตัวอย่าง animation ไม่ผ่าน
 
 lottie_success = load_lottieurl(lottie_url_success)
 lottie_failure = load_lottieurl(lottie_url_failure)
