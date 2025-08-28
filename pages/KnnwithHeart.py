@@ -113,11 +113,11 @@ if st.button("ทำนายผล"):
    if out[0] == 1:
     st.success("⚠️ท่านมีความเสี่ยงเบาหวานระยะเริ่มต้น (｡ŏ﹏ŏ)")
     if lottie_success:
-            st_lottie(lottie_success, speed=1, width=300, height=300, key="success")
+            st_lottie(lottie_failure, speed=1, width=300, height=300, key="failure")
    else:
     st.success("✅ท่านไม่มีความเสี่ยงเบาหวาน (≧▽≦)")
     if lottie_failure:
-            st_lottie(lottie_failure, speed=1, width=300, height=300, key="failure")
+        st_lottie(lottie_success, speed=1, width=300, height=300, key="success")
 
 else:
     st.write("ไม่ทำนาย")
