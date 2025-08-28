@@ -4,62 +4,71 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+from streamlit_lottie import st_lottie
+import requests
+
+# ====== ฟังก์ชันโหลด Lottie ======
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+# ====== โหลด Lottie ======
+lottie_url_hello = "https://lottie.host/a6ba2cb1-4445-4e24-b0c0-29c910e30d35/siFuTj6Dck.json"
+lottie_hello = load_lottieurl(lottie_url_hello)
 
 st.title('การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้น K-Nearest Neighbor')
-#st.image("./img/b1.jpg")
+
+# ----------------- Layout -----------------
 col1, col2 = st.columns(2)
-
 with col1:
-   st.header("")
    st.image("./img/b2.jpg")
-
 with col2:
-   st.header("")
    st.image("./img/b4.jpg")
 
-
+# ----------------- ข้อมูล -----------------
 html_7 = """
-<div style="background-color:#33beff;padding:15px;border-radius:15px 15px 15px 15px;border-style:'solid';border-color:black">
+<div style="background-color:#33beff;padding:15px;border-radius:15px;
+            border-style:'solid';border-color:black">
 <center><h4>ข้อมูลโรคเบาหวานสำหรับทำนาย</h4></center>
 </div>
 """
 st.markdown(html_7, unsafe_allow_html=True)
-st.markdown("")
-st.markdown("")
 
-st.subheader("ข้อมูลส่วนแรก 10 แถว")
 dt = pd.read_csv("./data/Diabetes.csv")
 dt = dt.replace({
     'Yes': 1, 'No': 0,
     'Male': 1, 'Female': 0,
     'Positive': 1, 'Negative': 0
 })
+
+st.subheader("ข้อมูลส่วนแรก 10 แถว")
 st.write(dt.head(10))
 st.subheader("ข้อมูลส่วนสุดท้าย 10 แถว")
 st.write(dt.tail(10))
 
-# สถิติพื้นฐาน
 st.subheader("📈 สถิติพื้นฐานของข้อมูล")
 st.write(dt.describe())
 
-# การเลือกแสดงกราฟตามฟีเจอร์
+# ----------------- Visualization -----------------
 st.subheader("📌 เลือกฟีเจอร์เพื่อดูการกระจายข้อมูล")
 feature = st.selectbox("เลือกฟีเจอร์", dt.columns[:-1])
 
-# วาดกราฟ boxplot
 st.write(f"### 🎯 Boxplot: {feature} แยกตามผลโรคเบาหวาน")
 fig, ax = plt.subplots()
 sns.boxplot(data=dt, x='class', y=feature, ax=ax)
 st.pyplot(fig)
 
-# วาด pairplot
 if st.checkbox("แสดง Pairplot (ใช้เวลาประมวลผลเล็กน้อย)"):
     st.write("### 🌺 Pairplot: การกระจายของข้อมูลทั้งหมด")
     fig2 = sns.pairplot(dt, hue='class')
     st.pyplot(fig2)
 
+# ----------------- ทำนาย -----------------
 html_8 = """
-<div style="background-color:#6BD5DA;padding:15px;border-radius:15px 15px 15px 15px;border-style:'solid';border-color:black">
+<div style="background-color:#6BD5DA;padding:15px;border-radius:15px;
+            border-style:'solid';border-color:black">
 <center><h5>ทำนายข้อมูล</h5></center>
 </div>
 """
@@ -104,5 +113,8 @@ if st.button("ทำนายผล"):
    else:
     st.success("✅ท่านไม่มีความเสี่ยงเบาหวาน (≧▽≦)")
     st.image("./img/b5.jpg")
+    if lottie_hello:
+        st_lottie(lottie_hello, height=250, key="hello")
+
 else:
     st.write("ไม่ทำนาย")

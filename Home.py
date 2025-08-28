@@ -9,7 +9,7 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-# ====== เมนูหน้าเพจ ======
+
 st.page_link("Home.py", label="หน้าแรก", icon="🏠")
 st.page_link("pages/DTree.py", label="การทำนายข้อมูลด้วยเทคนิคต้นไม้ตัดสินใจ", icon="1️⃣")
 st.page_link("pages/NaiveBaye.py", label="การทำนายข้อมูลด้วยเทคนิค Naive Baye", icon="2️⃣")
@@ -20,7 +20,6 @@ st.page_link("http://www.google.com", label="Google", icon="🌎")
 lottie_url_hello = "https://lottie.host/a6ba2cb1-4445-4e24-b0c0-29c910e30d35/siFuTj6Dck.json"
 lottie_hello = load_lottieurl(lottie_url_hello)
 
-# ====== Layout ======
 col1, col2 = st.columns(2)
 with col1:
     st.header("")
