@@ -19,12 +19,14 @@ def load_lottieurl(url: str):
 import json
 from streamlit_lottie import st_lottie
 
-with open("./img/Trackingofassets.json") as f:
+with open("./img/Safety.json") as f:
     lottie_success = json.load(f)
 
 with open("./img/AddFile.json") as f:
     lottie_failure = json.load(f)
 
+with open("./img/Trackingofassets.json") as f:
+    lottie_Ac = json.load(f)
 
 
 st.title('การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้น K-Nearest Neighbor')
