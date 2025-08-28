@@ -6,7 +6,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from streamlit_lottie import st_lottie
 import requests
-import time
+
 
 
 # ====== ฟังก์ชันโหลด Lottie ======
@@ -25,8 +25,6 @@ with open("./img/Trackingofassets.json") as f:
 with open("./img/AddFile.json") as f:
     lottie_failure = json.load(f)
 
-with open("./img/Safety.json") as f:
-    lottie_loading = json.load(f)
 
 
 st.title('การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้น K-Nearest Neighbor')
@@ -106,9 +104,6 @@ A16 = st.number_input("โรคอ้วน (ใช่=1 ไม่ใช่=0)"
 
 if st.button("ทำนายผล"):
    
-   with st.spinner('กำลังประมวลผล...'):
-        st_lottie(lottie_loading, height=150)  # แสดง animation loading
-        time.sleep(4)  # จำลองเวลาโหลด
    #st.write("ทำนาย")
    #dt = pd.read_csv("./data/iris-3.csv") 
    X = dt.drop('class', axis=1)
