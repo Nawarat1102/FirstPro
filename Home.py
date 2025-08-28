@@ -5,3 +5,12 @@ st.page_link("pages/DTree.py", label="การทำนายข้อมูล
 st.page_link("pages/NaiveBaye.py", label="การทำนายข้อมูลด้วยเทคนิค Naive Baye", icon="2️⃣")
 st.page_link("pages/KnnwithHeart.py", label="การทำนายข้อมูลด้วยเทคนิค KNN", icon="3️⃣")
 st.page_link("http://www.google.com", label="Google", icon="🌎")
+
+col1, col2 = st.columns(2)
+with col1:
+   st.header("")
+   st.image("./img/a1.png")
+
+with col2:
+   st.header("")
+   st.image("./img/b8.jpg")

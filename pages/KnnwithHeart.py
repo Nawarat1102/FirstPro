@@ -99,10 +99,10 @@ if st.button("ทำนายผล"):
    out=Knn_model.predict(x_input)
 
    if out[0] == 1:
-    st.success("ท่านมีความเสี่ยงเบาหวานระยะเริ่มต้น (｡ŏ﹏ŏ)")
+    st.success("⚠️ท่านมีความเสี่ยงเบาหวานระยะเริ่มต้น (｡ŏ﹏ŏ)")
     st.image("./img/b3.jpg")
    else:
-    st.success("ท่านไม่มีความเสี่ยงเบาหวาน (≧▽≦)")
+    st.success("✅ท่านไม่มีความเสี่ยงเบาหวาน (≧▽≦)")
     st.image("./img/b5.jpg")
 else:
     st.write("ไม่ทำนาย")
