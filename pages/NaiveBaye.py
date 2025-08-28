@@ -4,8 +4,27 @@ import streamlit as st
 import seaborn as sns
 from sklearn.naive_bayes import GaussianNB
 import matplotlib.pyplot as plt
+from streamlit_lottie import st_lottie
+import requests
 
-st.title('การทำนายความเสี่ยงเบาหวานระยะเริ่มต้นด้วย Naive Baye')
+# ====== ฟังก์ชันโหลด Lottie ======
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+import json
+from streamlit_lottie import st_lottie
+
+with open("./img/Safety.json") as f:
+    lottie_success = json.load(f)
+
+with open("./img/AddFile.json") as f:
+    lottie_failure = json.load(f)
+
+with open("./img/Trackingofassets.json") as f:
+    lottie_Ac = json.load(f)
 
 st.title('การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้น Naive Baye')
 #st.image("./img/b1.jpg")
@@ -71,6 +90,8 @@ html_8 = """
 st.markdown(html_8, unsafe_allow_html=True)
 st.markdown("")
 
+st_lottie(lottie_Ac, height=250)
+
 st.subheader("กรุณาใส่ข้อมูลเพื่อทำนายความเสี่ยงเบาหวาน")
 A1 = st.number_input("อายุ")
 A2 = st.number_input("เพศ (ชาย=1 หญิง=0)")
@@ -106,9 +127,9 @@ if st.button("ทำนายผล"):
 
     if out[0] == 1:
         st.success("⚠️ท่านมีความเสี่ยงเบาหวานระยะเริ่มต้น (｡ŏ﹏ŏ)")
-        st.image("./img/b3.jpg")
+        st_lottie(lottie_failure, height=250)
     else:
         st.success("✅ท่านไม่มีความเสี่ยงเบาหวาน (≧▽≦)")
-        st.image("./img/b5.jpg")
+        st_lottie(lottie_success, height=250)
 else:
     st.write("ไม่ทำนาย")

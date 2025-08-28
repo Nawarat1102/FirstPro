@@ -6,6 +6,28 @@ import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from streamlit_lottie import st_lottie
+import requests
+
+# ====== ฟังก์ชันโหลด Lottie ======
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+import json
+from streamlit_lottie import st_lottie
+
+with open("./img/Safety.json") as f:
+    lottie_success = json.load(f)
+
+with open("./img/AddFile.json") as f:
+    lottie_failure = json.load(f)
+
+with open("./img/Trackingofassets.json") as f:
+    lottie_Ac = json.load(f)
+
 
 st.title("🌳 การทำนายข้อมูลโรคเบาหวานระยะเริ่มต้นด้วย Decision Tree")
 
@@ -114,7 +136,7 @@ fig3, ax3 = plt.subplots(figsize=(12,6))
 plot_tree(dt_model, feature_names=X.columns, class_names=["0","1"], filled=True, ax=ax3)
 st.pyplot(fig3)
 
-
+st_lottie(lottie_Ac, height=250)
 
 st.subheader("กรุณาใส่ข้อมูลเพื่อทำนายความเสี่ยงเบาหวาน")
 A1 = st.number_input("อายุ")
@@ -145,9 +167,9 @@ if st.button("ทำนายผล"):
 
     if out[0] == 1:
         st.success("⚠️ท่านมีความเสี่ยงเบาหวานระยะเริ่มต้น (｡ŏ﹏ŏ)")
-        st.image("./img/b3.jpg")
+        st_lottie(lottie_failure, height=250)
     else:
         st.success("✅ท่านไม่มีความเสี่ยงเบาหวาน (≧▽≦)")
-        st.image("./img/b5.jpg")
+        st_lottie(lottie_success, height=250)
 else:
     st.write("ไม่ทำนาย")

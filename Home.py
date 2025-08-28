@@ -23,7 +23,7 @@ st.page_link("http://www.google.com", label="Google", icon="🌎")
 
 
 # ====== แสดง Animation ======
-st_lottie(lottie_hm, height=250)
+st_lottie(lottie_hm, height=200)
 
 col1, col2 = st.columns(2)
 with col1:
