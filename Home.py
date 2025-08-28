@@ -9,6 +9,11 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
+import json
+from streamlit_lottie import st_lottie
+
+with open("./img/Health.json") as f:
+    lottie_hm = json.load(f)
 
 st.page_link("Home.py", label="หน้าแรก", icon="🏠")
 st.page_link("pages/DTree.py", label="การทำนายข้อมูลด้วยเทคนิคต้นไม้ตัดสินใจ", icon="1️⃣")
@@ -16,9 +21,9 @@ st.page_link("pages/NaiveBaye.py", label="การทำนายข้อม�
 st.page_link("pages/KnnwithHeart.py", label="การทำนายข้อมูลด้วยเทคนิค KNN", icon="3️⃣")
 st.page_link("http://www.google.com", label="Google", icon="🌎")
 
-# ====== โหลด Lottie ======
-lottie_url_hello = "https://lottie.host/a6ba2cb1-4445-4e24-b0c0-29c910e30d35/siFuTj6Dck.json"
-lottie_hello = load_lottieurl(lottie_url_hello)
+
+# ====== แสดง Animation ======
+st_lottie(lottie_hm, height=250)
 
 col1, col2 = st.columns(2)
 with col1:
@@ -29,6 +34,4 @@ with col2:
     st.header("")
     st.image("./img/b8.jpg")
 
-# ====== แสดง Animation ======
-if lottie_hello:
-    st_lottie(lottie_hello, height=250, key="hello")
+
