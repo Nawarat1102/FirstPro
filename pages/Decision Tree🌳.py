@@ -138,7 +138,7 @@ st.pyplot(fig3)
 
 st_lottie(lottie_Ac, height=250)
 
-st.subheader("กรุณาใส่ข้อมูลเพื่อทำนายความเสี่ยงเบาหวาน")
+st.subheader("กรุณาใส่ข้อมูลเพื่อทำนายความเสี่ยงเบาหวานของท่าน")
 A1 = st.number_input("อายุ")
 A2 = st.number_input("เพศ (ชาย=1 หญิง=0)")
 A3 = st.number_input("ปัสสาวะบ่อย (ใช่=1 ไม่ใช่=0)")
